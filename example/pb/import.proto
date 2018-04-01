@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "subpackage/example.proto";
+import "subpackage/subsubpackage/example.proto";
+
+package pb;
+
+service Import {
+	rpc Simple(subpackage.Input) returns (subpackage.Output);
+	rpc ClientStream(stream subpackage.Input) returns (subpackage.Output);
+	rpc ServerStream(subpackage.Input) returns (stream subpackage.Output);
+	rpc DuplexStream(stream subpackage.Input) returns (stream subpackage.Output);
+
+	rpc SubSimple(subpackage.subsubpackage.Input) returns (subpackage.subsubpackage.Output);
+	rpc SubClientStream(stream subpackage.subsubpackage.Input) returns (subpackage.subsubpackage.Output);
+	rpc SubServerStream(subpackage.subsubpackage.Input) returns (stream subpackage.subsubpackage.Output);
+	rpc SubDuplexStream(stream subpackage.subsubpackage.Input) returns (stream subpackage.subsubpackage.Output);
+}
