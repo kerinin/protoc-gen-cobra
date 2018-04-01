@@ -9,26 +9,26 @@ import fmt "fmt"
 import math "math"
 
 import (
-	os "os"
-	envconfig "github.com/kelseyhightower/envconfig"
-	io "io"
-	oauth "google.golang.org/grpc/credentials/oauth"
-	oauth2 "golang.org/x/oauth2"
-	x509 "crypto/x509"
+	cobra "github.com/spf13/cobra"
 	context "golang.org/x/net/context"
 	credentials "google.golang.org/grpc/credentials"
+	envconfig "github.com/kelseyhightower/envconfig"
+	filepath "path/filepath"
+	grpc "google.golang.org/grpc"
+	io "io"
 	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
+	ioutil "io/ioutil"
 	json "encoding/json"
 	log "log"
 	net "net"
-	time "time"
-	tls "crypto/tls"
-	cobra "github.com/spf13/cobra"
-	grpc "google.golang.org/grpc"
-	ioutil "io/ioutil"
-	filepath "path/filepath"
+	oauth "google.golang.org/grpc/credentials/oauth"
+	oauth2 "golang.org/x/oauth2"
+	os "os"
 	pflag "github.com/spf13/pflag"
 	template "text/template"
+	time "time"
+	tls "crypto/tls"
+	x509 "crypto/x509"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -37,26 +37,26 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 // Reference imports to suppress errors if they are not otherwise used.
+var _ cobra.Command
 var _ context.Context
 var _ credentials.AuthInfo
-var _ iocodec.Encoder
-var _ oauth2.Token
-var _ x509.Certificate
-var _ cobra.Command
+var _ envconfig.Decoder
+var _ filepath.WalkFunc
 var _ grpc.ClientConn
+var _ io.Reader
+var _ iocodec.Encoder
 var _ = ioutil.Discard
 var _ json.Encoder
 var _ log.Logger
 var _ net.IP
-var _ time.Time
-var _ tls.Config
-var _ filepath.WalkFunc
+var _ oauth.TokenSource
+var _ oauth2.Token
+var _ os.File
 var _ pflag.FlagSet
 var _ template.Template
-var _ envconfig.Decoder
-var _ io.Reader
-var _ oauth.TokenSource
-var _ os.File
+var _ time.Time
+var _ tls.Config
+var _ x509.Certificate
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.

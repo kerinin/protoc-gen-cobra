@@ -42,43 +42,41 @@ func (c *client) Name() string {
 	return "client"
 }
 
-// map of import pkg name to unique name
-type importPkg map[string]*pkgInfo
-
 type pkgInfo struct {
+	Name       string
 	ImportPath string
 	KnownType  string
 	UniqueName string
 }
 
-var importPkgs = importPkg{
-	"cobra":       {ImportPath: "github.com/spf13/cobra", KnownType: "Command"},
-	"context":     {ImportPath: "golang.org/x/net/context", KnownType: "Context"},
-	"credentials": {ImportPath: "google.golang.org/grpc/credentials", KnownType: "AuthInfo"},
-	"envconfig":   {ImportPath: "github.com/kelseyhightower/envconfig", KnownType: "Decoder"},
-	"filepath":    {ImportPath: "path/filepath", KnownType: "WalkFunc"},
-	"grpc":        {ImportPath: "google.golang.org/grpc", KnownType: "ClientConn"},
-	"io":          {ImportPath: "io", KnownType: "Reader"},
-	"iocodec":     {ImportPath: "github.com/fiorix/protoc-gen-cobra/iocodec", KnownType: "Encoder"},
-	"ioutil":      {ImportPath: "io/ioutil", KnownType: "=Discard"},
-	"json":        {ImportPath: "encoding/json", KnownType: "Encoder"},
-	"log":         {ImportPath: "log", KnownType: "Logger"},
-	"net":         {ImportPath: "net", KnownType: "IP"},
-	"oauth":       {ImportPath: "google.golang.org/grpc/credentials/oauth", KnownType: "TokenSource"},
-	"oauth2":      {ImportPath: "golang.org/x/oauth2", KnownType: "Token"},
-	"os":          {ImportPath: "os", KnownType: "File"},
-	"pflag":       {ImportPath: "github.com/spf13/pflag", KnownType: "FlagSet"},
-	"template":    {ImportPath: "text/template", KnownType: "Template"},
-	"time":        {ImportPath: "time", KnownType: "Time"},
-	"tls":         {ImportPath: "crypto/tls", KnownType: "Config"},
-	"x509":        {ImportPath: "crypto/x509", KnownType: "Certificate"},
+var importPkgs = []*pkgInfo{
+	&pkgInfo{Name: "cobra", ImportPath: "github.com/spf13/cobra", KnownType: "Command"},
+	&pkgInfo{Name: "context", ImportPath: "golang.org/x/net/context", KnownType: "Context"},
+	&pkgInfo{Name: "credentials", ImportPath: "google.golang.org/grpc/credentials", KnownType: "AuthInfo"},
+	&pkgInfo{Name: "envconfig", ImportPath: "github.com/kelseyhightower/envconfig", KnownType: "Decoder"},
+	&pkgInfo{Name: "filepath", ImportPath: "path/filepath", KnownType: "WalkFunc"},
+	&pkgInfo{Name: "grpc", ImportPath: "google.golang.org/grpc", KnownType: "ClientConn"},
+	&pkgInfo{Name: "io", ImportPath: "io", KnownType: "Reader"},
+	&pkgInfo{Name: "iocodec", ImportPath: "github.com/fiorix/protoc-gen-cobra/iocodec", KnownType: "Encoder"},
+	&pkgInfo{Name: "ioutil", ImportPath: "io/ioutil", KnownType: "=Discard"},
+	&pkgInfo{Name: "json", ImportPath: "encoding/json", KnownType: "Encoder"},
+	&pkgInfo{Name: "log", ImportPath: "log", KnownType: "Logger"},
+	&pkgInfo{Name: "net", ImportPath: "net", KnownType: "IP"},
+	&pkgInfo{Name: "oauth", ImportPath: "google.golang.org/grpc/credentials/oauth", KnownType: "TokenSource"},
+	&pkgInfo{Name: "oauth2", ImportPath: "golang.org/x/oauth2", KnownType: "Token"},
+	&pkgInfo{Name: "os", ImportPath: "os", KnownType: "File"},
+	&pkgInfo{Name: "pflag", ImportPath: "github.com/spf13/pflag", KnownType: "FlagSet"},
+	&pkgInfo{Name: "template", ImportPath: "text/template", KnownType: "Template"},
+	&pkgInfo{Name: "time", ImportPath: "time", KnownType: "Time"},
+	&pkgInfo{Name: "tls", ImportPath: "crypto/tls", KnownType: "Config"},
+	&pkgInfo{Name: "x509", ImportPath: "crypto/x509", KnownType: "Certificate"},
 }
 
 // Init initializes the plugin.
 func (c *client) Init(gen *generator.Generator) {
 	c.gen = gen
-	for k := range importPkgs {
-		importPkgs[k].UniqueName = generator.RegisterUniquePackageName(k, nil)
+	for _, pkg := range importPkgs {
+		pkg.UniqueName = generator.RegisterUniquePackageName(pkg.Name, nil)
 	}
 }
 
@@ -103,7 +101,11 @@ func (c *client) Generate(file *generator.FileDescriptor) {
 	// Assert version compatibility.
 	c.P("// This is a compile-time assertion to ensure that this generated file")
 	c.P("// is compatible with the grpc package it is being compiled against.")
-	c.P("const _ = ", importPkgs["grpc"].UniqueName, ".SupportPackageIsVersion", generatedCodeVersion)
+	for _, v := range importPkgs {
+		if v.Name == "grpc" {
+			c.P("const _ = ", v.UniqueName, ".SupportPackageIsVersion", generatedCodeVersion)
+		}
+	}
 	c.P()
 
 	for i, service := range file.FileDescriptorProto.Service {

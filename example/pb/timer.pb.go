@@ -29,6 +29,13 @@ func (m *TickRequest) String() string            { return proto.CompactTextStrin
 func (*TickRequest) ProtoMessage()               {}
 func (*TickRequest) Descriptor() ([]byte, []int) { return fileDescriptorTimer, []int{0} }
 
+func (m *TickRequest) GetInterval() int32 {
+	if m != nil {
+		return m.Interval
+	}
+	return 0
+}
+
 type TickResponse struct {
 	Time string `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
 }
@@ -37,6 +44,13 @@ func (m *TickResponse) Reset()                    { *m = TickResponse{} }
 func (m *TickResponse) String() string            { return proto.CompactTextString(m) }
 func (*TickResponse) ProtoMessage()               {}
 func (*TickResponse) Descriptor() ([]byte, []int) { return fileDescriptorTimer, []int{1} }
+
+func (m *TickResponse) GetTime() string {
+	if m != nil {
+		return m.Time
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*TickRequest)(nil), "pb.TickRequest")
@@ -505,7 +519,7 @@ func init() { proto.RegisterFile("timer.proto", fileDescriptorTimer) }
 
 var fileDescriptorTimer = []byte{
 	// 154 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0xc9, 0xcc, 0x4d,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0xc9, 0xcc, 0x4d,
 	0x2d, 0xd2, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x2a, 0x48, 0x52, 0xd2, 0xe4, 0xe2, 0x0e,
 	0xc9, 0x4c, 0xce, 0x0e, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d, 0x2e, 0x11, 0x92, 0xe2, 0xe2, 0xc8, 0xcc,
 	0x2b, 0x49, 0x2d, 0x2a, 0x4b, 0xcc, 0x91, 0x60, 0x54, 0x60, 0xd4, 0x60, 0x0d, 0x82, 0xf3, 0x95,

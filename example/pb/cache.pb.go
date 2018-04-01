@@ -30,6 +30,20 @@ func (m *SetRequest) String() string            { return proto.CompactTextString
 func (*SetRequest) ProtoMessage()               {}
 func (*SetRequest) Descriptor() ([]byte, []int) { return fileDescriptorCache, []int{0} }
 
+func (m *SetRequest) GetKey() string {
+	if m != nil {
+		return m.Key
+	}
+	return ""
+}
+
+func (m *SetRequest) GetValue() string {
+	if m != nil {
+		return m.Value
+	}
+	return ""
+}
+
 type SetResponse struct {
 }
 
@@ -47,6 +61,13 @@ func (m *GetRequest) String() string            { return proto.CompactTextString
 func (*GetRequest) ProtoMessage()               {}
 func (*GetRequest) Descriptor() ([]byte, []int) { return fileDescriptorCache, []int{2} }
 
+func (m *GetRequest) GetKey() string {
+	if m != nil {
+		return m.Key
+	}
+	return ""
+}
+
 type GetResponse struct {
 	Value string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
@@ -55,6 +76,13 @@ func (m *GetResponse) Reset()                    { *m = GetResponse{} }
 func (m *GetResponse) String() string            { return proto.CompactTextString(m) }
 func (*GetResponse) ProtoMessage()               {}
 func (*GetResponse) Descriptor() ([]byte, []int) { return fileDescriptorCache, []int{3} }
+
+func (m *GetResponse) GetValue() string {
+	if m != nil {
+		return m.Value
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*SetRequest)(nil), "pb.SetRequest")
@@ -902,7 +930,7 @@ func init() { proto.RegisterFile("cache.proto", fileDescriptorCache) }
 
 var fileDescriptorCache = []byte{
 	// 205 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0xe2, 0x4e, 0x4e, 0x4c, 0xce,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4e, 0x4e, 0x4c, 0xce,
 	0x48, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x2a, 0x48, 0x52, 0x32, 0xe1, 0xe2, 0x0a,
 	0x4e, 0x2d, 0x09, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d, 0x2e, 0x11, 0x12, 0xe0, 0x62, 0xce, 0x4e, 0xad,
 	0x94, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0c, 0x02, 0x31, 0x85, 0x44, 0xb8, 0x58, 0xcb, 0x12, 0x73,
