@@ -9,26 +9,26 @@ import fmt "fmt"
 import math "math"
 
 import (
-	cobra "github.com/spf13/cobra"
-	grpc "google.golang.org/grpc"
-	ioutil "io/ioutil"
-	json "encoding/json"
-	log "log"
-	net "net"
-	time "time"
-	tls "crypto/tls"
-	filepath "path/filepath"
 	pflag "github.com/spf13/pflag"
-	template "text/template"
-	envconfig "github.com/kelseyhightower/envconfig"
-	io "io"
+	ioutil "io/ioutil"
 	oauth "google.golang.org/grpc/credentials/oauth"
-	os "os"
-	context "golang.org/x/net/context"
-	credentials "google.golang.org/grpc/credentials"
 	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
+	json "encoding/json"
+	net "net"
+	template "text/template"
+	tls "crypto/tls"
+	grpc "google.golang.org/grpc"
+	io "io"
+	credentials "google.golang.org/grpc/credentials"
 	oauth2 "golang.org/x/oauth2"
+	os "os"
+	time "time"
 	x509 "crypto/x509"
+	cobra "github.com/spf13/cobra"
+	context "golang.org/x/net/context"
+	log "log"
+	envconfig "github.com/kelseyhightower/envconfig"
+	filepath "path/filepath"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -38,25 +38,25 @@ var _ = math.Inf
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ envconfig.Decoder
-var _ io.Reader
+var _ filepath.WalkFunc
+var _ log.Logger
+var _ = ioutil.Discard
 var _ oauth.TokenSource
+var _ pflag.FlagSet
+var _ net.IP
+var _ template.Template
+var _ tls.Config
+var _ grpc.ClientConn
+var _ io.Reader
+var _ iocodec.Encoder
+var _ json.Encoder
 var _ os.File
+var _ time.Time
+var _ x509.Certificate
+var _ cobra.Command
 var _ context.Context
 var _ credentials.AuthInfo
-var _ iocodec.Encoder
 var _ oauth2.Token
-var _ x509.Certificate
-var _ net.IP
-var _ time.Time
-var _ tls.Config
-var _ cobra.Command
-var _ grpc.ClientConn
-var _ = ioutil.Discard
-var _ json.Encoder
-var _ log.Logger
-var _ filepath.WalkFunc
-var _ pflag.FlagSet
-var _ template.Template
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.

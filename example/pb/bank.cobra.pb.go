@@ -23,26 +23,26 @@ import fmt "fmt"
 import math "math"
 
 import (
+	tls "crypto/tls"
+	grpc "google.golang.org/grpc"
+	io "io"
 	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
-	oauth2 "golang.org/x/oauth2"
+	json "encoding/json"
+	net "net"
+	template "text/template"
 	x509 "crypto/x509"
+	cobra "github.com/spf13/cobra"
 	context "golang.org/x/net/context"
 	credentials "google.golang.org/grpc/credentials"
-	ioutil "io/ioutil"
-	json "encoding/json"
-	log "log"
-	net "net"
-	time "time"
-	tls "crypto/tls"
-	cobra "github.com/spf13/cobra"
-	grpc "google.golang.org/grpc"
-	template "text/template"
-	filepath "path/filepath"
-	pflag "github.com/spf13/pflag"
-	oauth "google.golang.org/grpc/credentials/oauth"
+	oauth2 "golang.org/x/oauth2"
 	os "os"
+	time "time"
 	envconfig "github.com/kelseyhightower/envconfig"
-	io "io"
+	filepath "path/filepath"
+	log "log"
+	ioutil "io/ioutil"
+	oauth "google.golang.org/grpc/credentials/oauth"
+	pflag "github.com/spf13/pflag"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -57,26 +57,26 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ = ioutil.Discard
-var _ json.Encoder
-var _ log.Logger
-var _ net.IP
-var _ time.Time
-var _ tls.Config
-var _ cobra.Command
-var _ grpc.ClientConn
-var _ template.Template
-var _ filepath.WalkFunc
-var _ pflag.FlagSet
-var _ oauth.TokenSource
-var _ os.File
 var _ envconfig.Decoder
+var _ filepath.WalkFunc
+var _ log.Logger
+var _ = ioutil.Discard
+var _ oauth.TokenSource
+var _ pflag.FlagSet
+var _ tls.Config
+var _ grpc.ClientConn
 var _ io.Reader
 var _ iocodec.Encoder
-var _ oauth2.Token
+var _ json.Encoder
+var _ net.IP
+var _ template.Template
 var _ x509.Certificate
+var _ cobra.Command
 var _ context.Context
 var _ credentials.AuthInfo
+var _ oauth2.Token
+var _ os.File
+var _ time.Time
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.

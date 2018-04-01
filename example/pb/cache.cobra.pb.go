@@ -9,26 +9,26 @@ import fmt "fmt"
 import math "math"
 
 import (
-	os "os"
-	envconfig "github.com/kelseyhightower/envconfig"
-	io "io"
-	oauth "google.golang.org/grpc/credentials/oauth"
 	oauth2 "golang.org/x/oauth2"
+	os "os"
+	time "time"
 	x509 "crypto/x509"
+	cobra "github.com/spf13/cobra"
 	context "golang.org/x/net/context"
 	credentials "google.golang.org/grpc/credentials"
-	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
-	json "encoding/json"
-	log "log"
-	net "net"
-	time "time"
-	tls "crypto/tls"
-	cobra "github.com/spf13/cobra"
-	grpc "google.golang.org/grpc"
-	ioutil "io/ioutil"
+	envconfig "github.com/kelseyhightower/envconfig"
 	filepath "path/filepath"
+	log "log"
+	ioutil "io/ioutil"
+	oauth "google.golang.org/grpc/credentials/oauth"
 	pflag "github.com/spf13/pflag"
+	json "encoding/json"
+	net "net"
 	template "text/template"
+	tls "crypto/tls"
+	grpc "google.golang.org/grpc"
+	io "io"
+	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -37,26 +37,26 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ context.Context
-var _ credentials.AuthInfo
+var _ pflag.FlagSet
+var _ = ioutil.Discard
+var _ oauth.TokenSource
 var _ iocodec.Encoder
+var _ json.Encoder
+var _ net.IP
+var _ template.Template
+var _ tls.Config
+var _ grpc.ClientConn
+var _ io.Reader
+var _ credentials.AuthInfo
 var _ oauth2.Token
+var _ os.File
+var _ time.Time
 var _ x509.Certificate
 var _ cobra.Command
-var _ grpc.ClientConn
-var _ = ioutil.Discard
-var _ json.Encoder
+var _ context.Context
 var _ log.Logger
-var _ net.IP
-var _ time.Time
-var _ tls.Config
-var _ filepath.WalkFunc
-var _ pflag.FlagSet
-var _ template.Template
 var _ envconfig.Decoder
-var _ io.Reader
-var _ oauth.TokenSource
-var _ os.File
+var _ filepath.WalkFunc
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.

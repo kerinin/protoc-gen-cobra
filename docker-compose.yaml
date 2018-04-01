@@ -1,0 +1,7 @@
+version: '3'
+services:
+  build-example:
+    build: .
+    command: bash -c 'cd example/pb && make && go build'
+    volumes:
+      - .:/go/src/github.com/fiorix/protoc-gen-cobra
