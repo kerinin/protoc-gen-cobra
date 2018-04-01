@@ -3,7 +3,15 @@ all:
 		-I. \
 		--gofast_out=plugins=grpc:. \
 		--cobra_out=plugins=client:. \
-		*.proto
+		*.proto && \
+	protoc \
+		-I. \
+		--gofast_out=plugins=grpc:$(GOPATH)/src \
+		subpackage/*.proto && \
+	protoc \
+		-I. \
+		--gofast_out=plugins=grpc:$(GOPATH)/src \
+		subpackage/subsubpackage/*.proto
 
 clean:
 	rm -f *.pb.go

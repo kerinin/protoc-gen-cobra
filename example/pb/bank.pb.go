@@ -7,6 +7,8 @@
 	It is generated from these files:
 		bank.proto
 		cache.proto
+		import.proto
+		noservice.proto
 		timer.proto
 
 	It has these top-level messages:
@@ -16,6 +18,7 @@
 		SetResponse
 		GetRequest
 		GetResponse
+		NoServiceMessage
 		TickRequest
 		TickResponse
 */

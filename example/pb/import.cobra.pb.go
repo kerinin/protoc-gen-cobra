@@ -9,26 +9,26 @@ import fmt "fmt"
 import math "math"
 
 import (
-	io "io"
-	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
-	log "log"
-	net "net"
-	tls "crypto/tls"
 	cobra "github.com/spf13/cobra"
-	credentials "google.golang.org/grpc/credentials"
-	grpc "google.golang.org/grpc"
-	os "os"
-	pflag "github.com/spf13/pflag"
-	x509 "crypto/x509"
 	context "golang.org/x/net/context"
-	oauth "google.golang.org/grpc/credentials/oauth"
-	oauth2 "golang.org/x/oauth2"
-	template "text/template"
+	credentials "google.golang.org/grpc/credentials"
 	envconfig "github.com/kelseyhightower/envconfig"
 	filepath "path/filepath"
+	grpc "google.golang.org/grpc"
+	io "io"
+	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
 	ioutil "io/ioutil"
 	json "encoding/json"
+	log "log"
+	net "net"
+	oauth "google.golang.org/grpc/credentials/oauth"
+	oauth2 "golang.org/x/oauth2"
+	os "os"
+	pflag "github.com/spf13/pflag"
+	template "text/template"
 	time "time"
+	tls "crypto/tls"
+	x509 "crypto/x509"
 	subpackage_pb "github.com/fiorix/protoc-gen-cobra/example/pb/subpackage"
 	subpackage_subsubpackage_pb "github.com/fiorix/protoc-gen-cobra/example/pb/subpackage/subsubpackage"
 )
@@ -39,26 +39,26 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ log.Logger
-var _ net.IP
-var _ tls.Config
-var _ io.Reader
-var _ iocodec.Encoder
-var _ grpc.ClientConn
-var _ os.File
-var _ pflag.FlagSet
-var _ x509.Certificate
 var _ cobra.Command
-var _ credentials.AuthInfo
-var _ oauth2.Token
-var _ template.Template
 var _ context.Context
-var _ oauth.TokenSource
-var _ = ioutil.Discard
-var _ json.Encoder
-var _ time.Time
+var _ credentials.AuthInfo
 var _ envconfig.Decoder
 var _ filepath.WalkFunc
+var _ grpc.ClientConn
+var _ io.Reader
+var _ iocodec.Encoder
+var _ = ioutil.Discard
+var _ json.Encoder
+var _ log.Logger
+var _ net.IP
+var _ oauth.TokenSource
+var _ oauth2.Token
+var _ os.File
+var _ pflag.FlagSet
+var _ template.Template
+var _ time.Time
+var _ tls.Config
+var _ x509.Certificate
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
