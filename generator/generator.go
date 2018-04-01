@@ -749,7 +749,7 @@ func (g *Generator) GenerateAllFiles() {
 	// of exported symbols to support public imports.
 	genFileMap := make(map[*FileDescriptor]bool, len(g.genFiles))
 	for _, file := range g.genFiles {
-		genFileMap[file] = true
+		genFileMap[file] = len(file.FileDescriptorProto.Service) > 0
 	}
 	for _, file := range g.allFiles {
 		g.Reset()
