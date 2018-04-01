@@ -9,26 +9,26 @@ import fmt "fmt"
 import math "math"
 
 import (
-	pflag "github.com/spf13/pflag"
-	ioutil "io/ioutil"
-	oauth "google.golang.org/grpc/credentials/oauth"
-	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
+	filepath "path/filepath"
 	json "encoding/json"
-	net "net"
-	template "text/template"
+	os "os"
+	cobra "github.com/spf13/cobra"
 	tls "crypto/tls"
+	x509 "crypto/x509"
+	credentials "google.golang.org/grpc/credentials"
+	log "log"
+	oauth "google.golang.org/grpc/credentials/oauth"
+	pflag "github.com/spf13/pflag"
+	context "golang.org/x/net/context"
+	envconfig "github.com/kelseyhightower/envconfig"
 	grpc "google.golang.org/grpc"
 	io "io"
-	credentials "google.golang.org/grpc/credentials"
+	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
+	ioutil "io/ioutil"
+	net "net"
 	oauth2 "golang.org/x/oauth2"
-	os "os"
+	template "text/template"
 	time "time"
-	x509 "crypto/x509"
-	cobra "github.com/spf13/cobra"
-	context "golang.org/x/net/context"
-	log "log"
-	envconfig "github.com/kelseyhightower/envconfig"
-	filepath "path/filepath"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -37,26 +37,26 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ envconfig.Decoder
-var _ filepath.WalkFunc
-var _ log.Logger
 var _ = ioutil.Discard
-var _ oauth.TokenSource
-var _ pflag.FlagSet
 var _ net.IP
-var _ template.Template
-var _ tls.Config
+var _ oauth2.Token
+var _ context.Context
+var _ envconfig.Decoder
 var _ grpc.ClientConn
 var _ io.Reader
 var _ iocodec.Encoder
+var _ template.Template
+var _ time.Time
+var _ filepath.WalkFunc
 var _ json.Encoder
 var _ os.File
-var _ time.Time
-var _ x509.Certificate
 var _ cobra.Command
-var _ context.Context
+var _ tls.Config
+var _ x509.Certificate
 var _ credentials.AuthInfo
-var _ oauth2.Token
+var _ log.Logger
+var _ oauth.TokenSource
+var _ pflag.FlagSet
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
