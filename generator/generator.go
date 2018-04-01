@@ -1035,13 +1035,15 @@ var wellKnownTypes = map[string]bool{
 }
 
 func (g *Generator) generateInitFunction() {
-	for _, d := range g.file.desc {
-		for _, ext := range d.ext {
+	if g.PackageImportPath != "" {
+		for _, d := range g.file.desc {
+			for _, ext := range d.ext {
+				g.generateExtensionRegistration(ext)
+			}
+		}
+		for _, ext := range g.file.ext {
 			g.generateExtensionRegistration(ext)
 		}
-	}
-	for _, ext := range g.file.ext {
-		g.generateExtensionRegistration(ext)
 	}
 	if len(g.init) == 0 {
 		return
