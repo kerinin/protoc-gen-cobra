@@ -7,6 +7,11 @@ all:
 	protoc \
 		-I. \
 		--gofast_out=plugins=grpc:$(GOPATH)/src \
+		--cobra_out=plugins=client:$(GOPATH)/src \
+		mismatch/*.proto && \
+	protoc \
+		-I. \
+		--gofast_out=plugins=grpc:$(GOPATH)/src \
 		subpackage/*.proto && \
 	protoc \
 		-I. \

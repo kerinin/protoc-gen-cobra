@@ -29,8 +29,8 @@ import (
 	time "time"
 	tls "crypto/tls"
 	x509 "crypto/x509"
-	subpackage_pb "github.com/fiorix/protoc-gen-cobra/example/pb/subpackage"
 	subpackage_subsubpackage_pb "github.com/fiorix/protoc-gen-cobra/example/pb/subpackage/subsubpackage"
+	subpackage_pb "github.com/fiorix/protoc-gen-cobra/example/pb/subpackage"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -270,19 +270,19 @@ func init() {
 }
 
 var _ImportClientStreamClientCommand = &cobra.Command{
-	Use:  "client-stream",
+	Use:  "clientstream",
 	Long: "ClientStream client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	client-stream -p > req.json
+	clientstream -p > req.json
 
 Submit request using file:
-	client-stream -f req.json
+	clientstream -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | client-stream --tls`,
+	echo '{json}' | clientstream --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v subpackage_pb.Input
 		err := _ImportRoundTrip(v, func(cli ImportClient, in iocodec.Decoder, out iocodec.Encoder) error {
@@ -326,19 +326,19 @@ func init() {
 }
 
 var _ImportServerStreamClientCommand = &cobra.Command{
-	Use:  "server-stream",
+	Use:  "serverstream",
 	Long: "ServerStream client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	server-stream -p > req.json
+	serverstream -p > req.json
 
 Submit request using file:
-	server-stream -f req.json
+	serverstream -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | server-stream --tls`,
+	echo '{json}' | serverstream --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v subpackage_pb.Input
 		err := _ImportRoundTrip(v, func(cli ImportClient, in iocodec.Decoder, out iocodec.Encoder) error {
@@ -382,19 +382,19 @@ func init() {
 }
 
 var _ImportDuplexStreamClientCommand = &cobra.Command{
-	Use:  "duplex-stream",
+	Use:  "duplexstream",
 	Long: "DuplexStream client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	duplex-stream -p > req.json
+	duplexstream -p > req.json
 
 Submit request using file:
-	duplex-stream -f req.json
+	duplexstream -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | duplex-stream --tls`,
+	echo '{json}' | duplexstream --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v subpackage_pb.Input
 		err := _ImportRoundTrip(v, func(cli ImportClient, in iocodec.Decoder, out iocodec.Encoder) error {
@@ -446,19 +446,19 @@ func init() {
 }
 
 var _ImportSubSimpleClientCommand = &cobra.Command{
-	Use:  "sub-simple",
+	Use:  "subsimple",
 	Long: "SubSimple client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	sub-simple -p > req.json
+	subsimple -p > req.json
 
 Submit request using file:
-	sub-simple -f req.json
+	subsimple -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | sub-simple --tls`,
+	echo '{json}' | subsimple --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v subpackage_subsubpackage_pb.Input
 		err := _ImportRoundTrip(v, func(cli ImportClient, in iocodec.Decoder, out iocodec.Encoder) error {
@@ -489,19 +489,19 @@ func init() {
 }
 
 var _ImportSubClientStreamClientCommand = &cobra.Command{
-	Use:  "sub-client-stream",
+	Use:  "subclientstream",
 	Long: "SubClientStream client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	sub-client-stream -p > req.json
+	subclientstream -p > req.json
 
 Submit request using file:
-	sub-client-stream -f req.json
+	subclientstream -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | sub-client-stream --tls`,
+	echo '{json}' | subclientstream --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v subpackage_subsubpackage_pb.Input
 		err := _ImportRoundTrip(v, func(cli ImportClient, in iocodec.Decoder, out iocodec.Encoder) error {
@@ -545,19 +545,19 @@ func init() {
 }
 
 var _ImportSubServerStreamClientCommand = &cobra.Command{
-	Use:  "sub-server-stream",
+	Use:  "subserverstream",
 	Long: "SubServerStream client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	sub-server-stream -p > req.json
+	subserverstream -p > req.json
 
 Submit request using file:
-	sub-server-stream -f req.json
+	subserverstream -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | sub-server-stream --tls`,
+	echo '{json}' | subserverstream --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v subpackage_subsubpackage_pb.Input
 		err := _ImportRoundTrip(v, func(cli ImportClient, in iocodec.Decoder, out iocodec.Encoder) error {
@@ -601,19 +601,19 @@ func init() {
 }
 
 var _ImportSubDuplexStreamClientCommand = &cobra.Command{
-	Use:  "sub-duplex-stream",
+	Use:  "subduplexstream",
 	Long: "SubDuplexStream client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	sub-duplex-stream -p > req.json
+	subduplexstream -p > req.json
 
 Submit request using file:
-	sub-duplex-stream -f req.json
+	subduplexstream -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | sub-duplex-stream --tls`,
+	echo '{json}' | subduplexstream --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v subpackage_subsubpackage_pb.Input
 		err := _ImportRoundTrip(v, func(cli ImportClient, in iocodec.Decoder, out iocodec.Encoder) error {

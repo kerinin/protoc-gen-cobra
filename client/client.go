@@ -462,7 +462,7 @@ func (c *client) generateSubcommand(servName string, file *generator.FileDescrip
 		methName += "_"
 	}
 	importName, inputPackage, inputType := inputNames(method.GetInputType())
-	if inputPackage == file.PackageName() {
+	if inputPackage == file.GetPackage() {
 		importName = ""
 	}
 	var b bytes.Buffer
