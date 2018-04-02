@@ -311,19 +311,19 @@ func init() {
 }
 
 var _CacheMultiSetClientCommand = &cobra.Command{
-	Use:  "multiset",
+	Use:  "multi-set",
 	Long: "MultiSet client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	multiset -p > req.json
+	multi-set -p > req.json
 
 Submit request using file:
-	multiset -f req.json
+	multi-set -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | multiset --tls`,
+	echo '{json}' | multi-set --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v SetRequest
 		err := _CacheRoundTrip(v, func(cli CacheClient, in iocodec.Decoder, out iocodec.Encoder) error {
@@ -367,19 +367,19 @@ func init() {
 }
 
 var _CacheMultiGetClientCommand = &cobra.Command{
-	Use:  "multiget",
+	Use:  "multi-get",
 	Long: "MultiGet client\n\nYou can use environment variables with the same name of the command flags.\nAll caps and s/-/_, e.g. SERVER_ADDR.",
 	Example: `
 Save a sample request to a file (or refer to your protobuf descriptor to create one):
-	multiget -p > req.json
+	multi-get -p > req.json
 
 Submit request using file:
-	multiget -f req.json
+	multi-get -f req.json
 
 Authenticate using the Authorization header (requires transport security):
 	export AUTH_TOKEN=your_access_token
 	export SERVER_ADDR=api.example.com:443
-	echo '{json}' | multiget --tls`,
+	echo '{json}' | multi-get --tls`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var v GetRequest
 		err := _CacheRoundTrip(v, func(cli CacheClient, in iocodec.Decoder, out iocodec.Encoder) error {

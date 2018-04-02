@@ -166,9 +166,10 @@ func (c *client) generateService(file *generator.FileDescriptor, service *pb.Ser
 		fullServName = pkg + "." + fullServName
 	}
 	servName := generator.CamelCase(origServName)
+	useName := c.name(origServName)
 
 	c.P()
-	c.generateCommand(servName)
+	c.generateCommand(servName, useName)
 	c.P()
 	for _, method := range service.Method {
 		c.generateSubcommand(servName, file, method)
@@ -342,14 +343,14 @@ func _{{.Name}}RoundTrip(sample interface{}, fn _{{.Name}}RoundTripFunc) error {
 
 var generateCommandTemplate = template.Must(template.New("cmd").Parse(generateCommandTemplateCode))
 
-func (c *client) generateCommand(servName string) {
+func (c *client) generateCommand(servName, useName string) {
 	var b bytes.Buffer
 	err := generateCommandTemplate.Execute(&b, struct {
 		Name    string
 		UseName string
 	}{
 		Name:    servName,
-		UseName: strings.ToLower(servName),
+		UseName: useName,
 	})
 	if err != nil {
 		c.gen.Error(err, "exec cmd template")
@@ -455,6 +456,7 @@ func (c *client) generateSubcommand(servName string, file *generator.FileDescrip
 		}
 	*/
 	origMethName := method.GetName()
+	useName := c.name(origMethName)
 	methName := generator.CamelCase(origMethName)
 	if reservedClientName[methName] {
 		methName += "_"
@@ -475,7 +477,7 @@ func (c *client) generateSubcommand(servName string, file *generator.FileDescrip
 		ServerStream bool
 	}{
 		Name:         methName,
-		UseName:      strings.ToLower(methName),
+		UseName:      useName,
 		ServiceName:  servName,
 		FullName:     servName + methName,
 		InputPackage: importName,

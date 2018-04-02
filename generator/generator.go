@@ -298,6 +298,8 @@ type Generator struct {
 
 	Pkg map[string]string // The names under which we import support packages
 
+	Namer string // The algorithm used to generate subcommand names from service/method names
+
 	packageName      string                     // What we're calling ourselves.
 	allFiles         []*FileDescriptor          // All files in the tree
 	allFilesByName   map[string]*FileDescriptor // All files by filename.
@@ -355,6 +357,8 @@ func (g *Generator) CommandLineParameters(parameter string) {
 			g.ImportPrefix = v
 		case "import_path":
 			g.PackageImportPath = v
+		case "namer":
+			g.Namer = v
 		case "plugins":
 			pluginList = v
 		default:
