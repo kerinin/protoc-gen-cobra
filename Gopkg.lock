@@ -48,6 +48,7 @@
 [[projects]]
   name = "github.com/golang/protobuf"
   packages = [
+    "jsonpb",
     "proto",
     "protoc-gen-go",
     "protoc-gen-go/descriptor",
@@ -57,6 +58,7 @@
     "ptypes",
     "ptypes/any",
     "ptypes/duration",
+    "ptypes/struct",
     "ptypes/timestamp"
   ]
   revision = "925541529c1fa6821df4e44ce2723319eb2be768"
@@ -265,6 +267,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a7639e57f9170704c10820043ec2a157b71ecb8df1b6bd52fe224e58859264b8"
+  inputs-digest = "7ced06ed05c0afac6bcac148b58cce4e680d2095ac938aae604dd81f80469ade"
   solver-name = "gps-cdcl"
   solver-version = 1
