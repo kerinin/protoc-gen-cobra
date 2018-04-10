@@ -13,7 +13,7 @@ import (
 // DefaultDecoders contains the default list of decoders per MIME type.
 var DefaultDecoders = DecoderGroup{
 	"xml":  DecoderMakerFunc(func(r io.Reader) Decoder { return xml.NewDecoder(r) }),
-	"json": DecoderMakerFunc(func(r io.Reader) Decoder { return &jsonDecoder{r} }),
+	"json": DecoderMakerFunc(func(r io.Reader) Decoder { return &jsonDecoder{r: r} }),
 	"yaml": DecoderMakerFunc(func(r io.Reader) Decoder { return &yamlDecoder{r} }),
 }
 
