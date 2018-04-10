@@ -1,18 +1,19 @@
 package iocodec
 
 import (
-	"encoding/json"
 	"encoding/xml"
 	"io"
 	"io/ioutil"
 
+	"github.com/golang/protobuf/jsonpb"
+	"github.com/golang/protobuf/proto"
 	"gopkg.in/yaml.v2"
 )
 
 // DefaultDecoders contains the default list of decoders per MIME type.
 var DefaultDecoders = DecoderGroup{
 	"xml":  DecoderMakerFunc(func(r io.Reader) Decoder { return xml.NewDecoder(r) }),
-	"json": DecoderMakerFunc(func(r io.Reader) Decoder { return json.NewDecoder(r) }),
+	"json": DecoderMakerFunc(func(r io.Reader) Decoder { return &jsonDecoder{r} }),
 	"yaml": DecoderMakerFunc(func(r io.Reader) Decoder { return &yamlDecoder{r} }),
 }
 
@@ -38,6 +39,15 @@ type (
 // NewDecoder implements the DecoderMaker interface.
 func (f DecoderMakerFunc) NewDecoder(r io.Reader) Decoder {
 	return f(r)
+}
+
+type jsonDecoder struct {
+	r           io.Reader
+	unmarshaler jsonpb.Unmarshaler
+}
+
+func (jd *jsonDecoder) Decode(v interface{}) error {
+	return jd.unmarshaler.Unmarshal(jd.r, v.(proto.Message))
 }
 
 type yamlDecoder struct {

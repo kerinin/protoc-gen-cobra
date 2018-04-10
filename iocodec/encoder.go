@@ -1,19 +1,19 @@
 package iocodec
 
 import (
-	"bytes"
-	"encoding/json"
 	"encoding/xml"
 	"io"
 
+	"github.com/golang/protobuf/jsonpb"
+	"github.com/golang/protobuf/proto"
 	"gopkg.in/yaml.v2"
 )
 
 // DefaultEncoders contains the default list of encoders per MIME type.
 var DefaultEncoders = EncoderGroup{
 	"xml":        EncoderMakerFunc(func(w io.Writer) Encoder { return &xmlEncoder{w} }),
-	"json":       EncoderMakerFunc(func(w io.Writer) Encoder { return &jsonEncoder{w, false} }),
-	"prettyjson": EncoderMakerFunc(func(w io.Writer) Encoder { return &jsonEncoder{w, true} }),
+	"json":       EncoderMakerFunc(func(w io.Writer) Encoder { return &jsonEncoder{w: w} }),
+	"prettyjson": EncoderMakerFunc(func(w io.Writer) Encoder { return &jsonEncoder{w: w, pretty: true} }),
 	"yaml":       EncoderMakerFunc(func(w io.Writer) Encoder { return &yamlEncoder{w} }),
 }
 
@@ -54,29 +54,18 @@ func (xe *xmlEncoder) Encode(v interface{}) error {
 }
 
 type jsonEncoder struct {
-	w      io.Writer
-	pretty bool
+	w         io.Writer
+	pretty    bool
+	marshaler jsonpb.Marshaler
 }
 
 func (je *jsonEncoder) Encode(v interface{}) error {
 	if je.pretty {
-		b, err := json.Marshal(v)
-		if err != nil {
-			return err
-		}
-		var out bytes.Buffer
-		err = json.Indent(&out, b, "", "\t")
-		if err != nil {
-			return err
-		}
-		_, err = io.Copy(je.w, &out)
-		if err != nil {
-			return err
-		}
-		_, err = je.w.Write([]byte("\n"))
-		return err
+		je.marshaler.Indent = "\t"
+	} else {
+		je.marshaler.Indent = ""
 	}
-	return json.NewEncoder(je.w).Encode(v)
+	return je.marshaler.Marshal(je.w, v.(proto.Message))
 }
 
 type yamlEncoder struct {
