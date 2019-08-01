@@ -1,0 +1,4 @@
+github.com/fiorix/protoc-gen-cobra v0.0.0-20181029091941-dffa0bfa45cc h1:jVtz+mwayXeJvDPU11Gv6+e+XbL2PWKWoIuiCKuvaLo=
+github.com/fiorix/protoc-gen-cobra v0.0.0-20181029091941-dffa0bfa45cc/go.mod h1:rgUMe9Tm9D16RKvITiQRoYGTziAc//AukpZ9nTdW32A=
+github.com/golang/protobuf v1.3.2 h1:6nsPYzhq5kReh6QImI3k5qWzO4PEbvbIW2cwSfR/6xs=
+github.com/golang/protobuf v1.3.2/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
