@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/fiorix/protoc-gen-cobra/generator"
+	"github.com/kerinin/protoc-gen-cobra/generator"
 )
 
 var matchFirstCap = regexp.MustCompile("(.)([A-Z][a-z]+)")

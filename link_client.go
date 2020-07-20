@@ -5,4 +5,4 @@
 
 package main
 
-import _ "github.com/fiorix/protoc-gen-cobra/client"
+import _ "github.com/kerinin/protoc-gen-cobra/client"

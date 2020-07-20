@@ -31,7 +31,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"github.com/fiorix/protoc-gen-cobra/generator"
+	"github.com/kerinin/protoc-gen-cobra/generator"
 )
 
 func main() {

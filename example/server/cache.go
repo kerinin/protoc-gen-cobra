@@ -6,7 +6,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"github.com/fiorix/protoc-gen-cobra/example/pb"
+	"github.com/kerinin/protoc-gen-cobra/example/pb"
 )
 
 type Cache struct {

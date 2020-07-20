@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package match;
 
-option go_package = "github.com/fiorix/protoc-gen-cobra/example/pb/mismatch";
+option go_package = "github.com/kerinin/protoc-gen-cobra/example/pb/mismatch";
 
 service Service {
 	rpc Method(Input) returns (Output);

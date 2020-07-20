@@ -12,12 +12,12 @@ RUN wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.
 RUN pwd
 RUN ls -l
 
-WORKDIR /go/src/github.com/fiorix/protoc-gen-cobra
-COPY vendor /go/src/github.com/fiorix/protoc-gen-cobra/vendor
+WORKDIR /go/src/github.com/kerinin/protoc-gen-cobra
+COPY vendor /go/src/github.com/kerinin/protoc-gen-cobra/vendor
 
 RUN cd vendor/github.com/golang/protobuf/protoc-gen-go && go install
 RUN cd vendor/github.com/gogo/protobuf/protoc-gen-gofast && go install
 
-COPY . /go/src/github.com/fiorix/protoc-gen-cobra
+COPY . /go/src/github.com/kerinin/protoc-gen-cobra
 
 RUN go install

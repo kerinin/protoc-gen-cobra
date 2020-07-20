@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/fiorix/protoc-gen-cobra/example/cmd"
-	"github.com/fiorix/protoc-gen-cobra/example/pb"
+	"github.com/kerinin/protoc-gen-cobra/example/cmd"
+	"github.com/kerinin/protoc-gen-cobra/example/pb"
 )
 
 func init() {

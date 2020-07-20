@@ -1,8 +1,8 @@
 # protoc-gen-cobra
 
-Cobra command line tool generator for Go gRPC.
+Cobra command line tool generator for Go gRPC, forked from [fiorix](https://github.com/fiorix/protoc-gen-cobra)
 
-[![GoDoc](https://godoc.org/github.com/fiorix/protoc-gen-cobra?status.svg)](https://godoc.org/github.com/fiorix/protoc-gen-cobra)
+[![GoDoc](https://godoc.org/github.com/kerinin/protoc-gen-cobra?status.svg)](https://godoc.org/github.com/kerinin/protoc-gen-cobra)
 
 ### What's this?
 

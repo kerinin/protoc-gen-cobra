@@ -18,7 +18,7 @@ import (
 
 	pb "github.com/golang/protobuf/protoc-gen-go/descriptor"
 
-	"github.com/fiorix/protoc-gen-cobra/generator"
+	"github.com/kerinin/protoc-gen-cobra/generator"
 )
 
 // generatedCodeVersion indicates a version of the generated code.
@@ -57,7 +57,7 @@ var importPkgs = []*pkgInfo{
 	&pkgInfo{Name: "filepath", ImportPath: "path/filepath", KnownType: "WalkFunc"},
 	&pkgInfo{Name: "grpc", ImportPath: "google.golang.org/grpc", KnownType: "ClientConn"},
 	&pkgInfo{Name: "io", ImportPath: "io", KnownType: "Reader"},
-	&pkgInfo{Name: "iocodec", ImportPath: "github.com/fiorix/protoc-gen-cobra/iocodec", KnownType: "Encoder"},
+	&pkgInfo{Name: "iocodec", ImportPath: "github.com/kerinin/protoc-gen-cobra/iocodec", KnownType: "Encoder"},
 	&pkgInfo{Name: "ioutil", ImportPath: "io/ioutil", KnownType: "=Discard"},
 	&pkgInfo{Name: "json", ImportPath: "encoding/json", KnownType: "Encoder"},
 	&pkgInfo{Name: "log", ImportPath: "log", KnownType: "Logger"},
@@ -155,7 +155,7 @@ func (c *client) GenerateImports(file *generator.FileDescriptor, imports []*gene
 
 // reservedClientName records whether a client name is reserved on the client side.
 var reservedClientName = map[string]bool{
-// TODO: do we need any in gRPC?
+	// TODO: do we need any in gRPC?
 }
 
 // generateService generates all the code for the named service.

@@ -23,4 +23,4 @@ clean:
 
 deps:
 	go get github.com/gogo/protobuf/protoc-gen-gofast
-	go get github.com/fiorix/protoc-gen-cobra
+	go get github.com/kerinin/protoc-gen-cobra

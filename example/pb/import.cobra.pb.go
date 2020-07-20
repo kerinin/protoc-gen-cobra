@@ -16,7 +16,7 @@ import (
 	filepath "path/filepath"
 	grpc "google.golang.org/grpc"
 	io "io"
-	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
+	iocodec "github.com/kerinin/protoc-gen-cobra/iocodec"
 	ioutil "io/ioutil"
 	json "encoding/json"
 	log "log"
@@ -29,8 +29,8 @@ import (
 	time "time"
 	tls "crypto/tls"
 	x509 "crypto/x509"
-	subpackage_subsubpackage_pb "github.com/fiorix/protoc-gen-cobra/example/pb/subpackage/subsubpackage"
-	subpackage_pb "github.com/fiorix/protoc-gen-cobra/example/pb/subpackage"
+	subpackage_pb "github.com/kerinin/protoc-gen-cobra/example/pb/subpackage"
+	subpackage_subsubpackage_pb "github.com/kerinin/protoc-gen-cobra/example/pb/subpackage/subsubpackage"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

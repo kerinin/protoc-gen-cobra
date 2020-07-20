@@ -4,4 +4,4 @@ services:
     build: .
     command: bash -c 'cd example/pb && make && go build'
     volumes:
-      - .:/go/src/github.com/fiorix/protoc-gen-cobra
+      - .:/go/src/github.com/kerinin/protoc-gen-cobra

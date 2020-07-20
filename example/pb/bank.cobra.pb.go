@@ -33,7 +33,7 @@ import (
 	filepath "path/filepath"
 	grpc "google.golang.org/grpc"
 	io "io"
-	iocodec "github.com/fiorix/protoc-gen-cobra/iocodec"
+	iocodec "github.com/kerinin/protoc-gen-cobra/iocodec"
 	ioutil "io/ioutil"
 	json "encoding/json"
 	log "log"
